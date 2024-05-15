@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de hover 2</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        div > p {
+            display: none;
+        }
+
+        div:hover > p {
+            display: block;
+            font-weight: bolder;
+            background-color: black;
+            width: 250px;
+        }
+
+        div:hover {
+            color: rgb(233, 24, 233);
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Teste de texto escondido</h1>
+    <p>Procure o texto!!!</p>
+    <div>
+        Está aqui?
+        <p>Achou</p>
+    </div>
+    <p>Fim do teste</p>
+    
+</body>
+</html>

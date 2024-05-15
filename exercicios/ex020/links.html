@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: greenyellow;
+        }
+
+        a:active {
+            color: yellow;
+        }
+
+        a:hover {
+            background-color: chocolate;
+        }
+
+        .especial::after {
+            content: '⚝';
+            color: black;
+            font-weight: bolder;
+        }
+        .especial::before {
+            content: '❤';
+            color: red;
+            font-weight: bolder;
+        }
+        .especial:hover {
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <h1>Personalizando Links</h1>
+    <ul>
+        <li>Acesse meu <a target="_blank" rel="external" href="https://github.com/gustavoguanabara/html-css/tree/master/aulas-pdf">Repositorio Github</a></li>
+        <li>Acesse meu canal no <a target="_blank" rel="external" href="https://www.youtube.com/">Youtube</a></li>
+        <li>Para aprender mais sobre programação acesse meu curso em <a target="_blank" rel="external" href="https://www.cursoemvideo.com/" class="especial">Curso em Video</a></li>
+    </ul>
+
+</body>
+</html>
