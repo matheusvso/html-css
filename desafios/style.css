@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family:"comicsansbold";
+    src: url(D011/fontes/);
+}
+
+body {
+    background-color: white
+}
+
+header {
+    background-color: black;
+    color: white;
+    font-family: comicsansbold;
+}
+p {
+    font-family: 'comicsansbold';
+}
