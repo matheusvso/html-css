@@ -43,6 +43,11 @@ a {
     padding: 40px 0px 60px 15px
 }
 
+div {
+    background-color: rgba(85, 85, 85, 0.774);
+    width: 300px;
+}
+
 #img1 {
     background-image: url(imagens/background001.jpg);
     background-position: right center;
