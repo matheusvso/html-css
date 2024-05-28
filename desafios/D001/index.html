@@ -1,14 +1,97 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensagens</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Memória</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .board {
+      display: flex;
+      flex-wrap: wrap;
+      width: 300px;
+    }
+
+    .card {
+      width: 50px;
+      height: 50px;
+      background-color: #eee;
+      margin: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 20px;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Desafio das Mensagens</h1>
-    <p>*Um <br>**Dois <br>***Três <br>****Quatro </p>
-    <p>****Quatro <br>***Três <br>**Dois <br>*Um</p>
-    
+  <h1>Jogo de Memória</h1>
+  <div class="board" id="board"></div>
+
+  <script>
+    const symbols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    const cards = [...symbols, ...symbols]; // Cada símbolo aparece duas vezes
+
+    // Embaralhar as cartas
+    cards.sort(() => Math.random() - 0.5);
+
+    let flippedCards = [];
+    let matchedCards = [];
+
+    function createBoard() {
+      const boardElement = document.getElementById('board');
+
+      cards.forEach((symbol, index) => {
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('card');
+        cardElement.setAttribute('data-index', index);
+        cardElement.textContent = symbol;
+        cardElement.addEventListener('click', () => flipCard(index));
+        boardElement.appendChild(cardElement);
+      });
+    }
+
+    function flipCard(index) {
+      // Ignorar cartas já viradas ou correspondidas
+      if (flippedCards.includes(index) || matchedCards.includes(index)) return;
+
+      // Virar a carta
+      const cardElement = document.querySelector(`.card[data-index="${index}"]`);
+      cardElement.classList.add('flipped');
+      flippedCards.push(index);
+
+      // Verificar se há correspondência
+      if (flippedCards.length === 2) {
+        const [firstIndex, secondIndex] = flippedCards;
+        const firstSymbol = cards[firstIndex];
+        const secondSymbol = cards[secondIndex];
+
+        if (firstSymbol === secondSymbol) {
+          matchedCards.push(firstIndex, secondIndex);
+          flippedCards = [];
+        } else {
+          setTimeout(() => {
+            const firstCardElement = document.querySelector(`.card[data-index="${firstIndex}"]`);
+            const secondCardElement = document.querySelector(`.card[data-index="${secondIndex}"]`);
+            firstCardElement.classList.remove('flipped');
+            secondCardElement.classList.remove('flipped');
+            flippedCards = [];
+          }, 1000);
+        }
+      }
+
+      // Verificar se o jogo terminou
+      if (matchedCards.length === cards.length) {
+        setTimeout(() => alert('Parabéns! Você venceu o jogo.'), 500);
+      }
+    }
+
+    createBoard();
+  </script>
 </body>
 </html>
